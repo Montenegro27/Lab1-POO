@@ -1,7 +1,10 @@
 //Universidad del valle de Guatemala - POO - Mauricio Montenegro - 23679
-// Lab 1 - El objetivo de este programa es crear un juego en el cual sea basado en dados.
+// Lab 1 - El objetivo de este programa es crear un juego en el cual sea basado en dados, el el cual los jugadores tendran oportunidades ilimitadas
+// Pero si un jugador pasa de 20 puntos se le pasará el turno al siguiente, el jugador puede decidir cuando quiere dejar de tirar, si el dado
+// Da el valor 1 se reinicia su puntaje y gana el primero en llegar a 100.
 import java.util.Random;
 import java.util.Scanner;
+// Definición de la clase Dado que representa un dado con un número de caras especificado
 class Dado {
     private int numCaras;
 
@@ -11,23 +14,24 @@ class Dado {
 
     public int lanzar() {
         Random rand = new Random();
-        return rand.nextInt(numCaras) + 1;
+        return rand.nextInt(numCaras) + 1; // Genera un número aleatorio entre 1 y el número de caras
     }
 }
+// Definición de la clase Jugador que representa a un jugador del juego
 class Jugador {
     private int puntajeTotal;
 
     public Jugador() {
-        puntajeTotal = 0;
+        puntajeTotal = 0; // Inicia el puntaje total del jugador en 0
     }
     public void tirarDado(Dado dado) {
-        int tiro = dado.lanzar();
+        int tiro = dado.lanzar(); // Lanza el dado y obtiene el valor del tiro
 
         if (tiro == 1) {
-            puntajeTotal = 0;
+            puntajeTotal = 0; // Si el tiro es 1, se reinicia el puntaje del jugador
             System.out.println("¡Has sacado un 1! Puntaje reiniciado.");
         } else {
-            puntajeTotal += tiro;
+            puntajeTotal += tiro; // Suma el valor del tiro al puntaje total del jugador
         }
 
         System.out.println("Tiro de dado: " + tiro);
